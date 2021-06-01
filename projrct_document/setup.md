@@ -3,7 +3,7 @@
 ## 事前に必要なもの
 * boost(依存関係分かってないけど多分必要)
 * cmake
-* clang++
+* clang++（自分の環境ではこれしかうまくいかなかった）
 * mysql
 
 ## step1
@@ -18,9 +18,11 @@
 適当なディレクトリに以下のMakefileを作成。
 
 ```
-MYSQL_CONCPP_DIR = /usr/local/mysql-connector-c++-8.0.25(インストール先のパス。場合に応じて変更)
+#インストール先のパス。必要に応じて変更
+MYSQL_CONCPP_DIR = /usr/local/mysql-connector-c++-8.0.25
 CPPFLAGS = -I $(MYSQL_CONCPP_DIR)/include -L $(MYSQL_CONCPP_DIR)/lib64
 LDLIBS = -lmysqlcppconn
+#好きな処理系を選択
 CXX = clang++
 CXXFLAGS = -std=c++11
 app : app.cpp
@@ -72,4 +74,4 @@ int main(){
  make test
  ```
 
-を実行。 何事もなく終了したらOK。
+を実行。 何事もなく終了したら運がいいね。
