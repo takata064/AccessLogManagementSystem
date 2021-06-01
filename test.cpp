@@ -20,10 +20,7 @@ int main(){
 	stmt->execute("USE playground");
 	res = stmt->executeQuery("SELECT id, label FROM test ORDER BY id ASC");
 	while (res->next()) {
-	// You can use either numeric offsets...
-	cout << "id = " << res->getInt(1); // getInt(1) returns the first column
-	// ... or column names for accessing results.
-	// The latter is recommended.
+	cout << "id = " << res->getInt(1);
 	cout << ", label = '" << res->getString("label") << "'" << endl;
 	}
 
