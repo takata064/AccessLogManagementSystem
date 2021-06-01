@@ -6,9 +6,9 @@
 |  amac  |  varchar  |
 | id | char(6) |
 | name | varchar |
-| entrytime | cahr(12) |
-| exittime | cahr(12) |
-| room | cahr(3) |
+| entrytime | char(12) |
+| exittime | char(12) |
+| room | char(3) |
 
 
 ## テーブル一覧
