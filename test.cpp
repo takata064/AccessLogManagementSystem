@@ -20,8 +20,8 @@ int main(){
 	stmt->execute("USE playground");
 	res = stmt->executeQuery("SELECT id, label FROM test ORDER BY id ASC");
 	while (res->next()) {
-	cout << "id = " << res->getInt(1);
-	cout << ", label = '" << res->getString("label") << "'" << endl;
+		cout << "id = " << res->getInt(1);
+		cout << ", label = '" << res->getString("label") << "'" << endl;
 	}
 
 	delete res;
