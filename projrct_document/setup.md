@@ -76,4 +76,26 @@ int main(){
  make test
  ```
 
-を実行してコンパイル。 何事もなく終了したらOK。
+を実行してコンパイル。コンパイルするだけだよ。何事もなく終了したらOK。
+
+## 上手くいかない時は..
+### dyldのエラー
+ターミナルで（これbashのやつね）
+ ```
+open ~/.bash_profile
+ ```
+を実行して、ファイルが開いたら
+```
+if [ -n "$DYLD_LIBRARY_PATH" ]; then
+DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:MySQL CONNECTORのlib64フォルダのパス
+else
+DYLD_LIBRARY_PATH=MySQL CONNECTORのlib64フォルダのパス
+fi
+export DYLD_LIBRARY_PATH
+```
+を書き込む。もともと書いてあった場合は、:で区切ってパスを入力。
+これで治るはず。
+
+
+
+
