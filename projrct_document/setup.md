@@ -12,6 +12,8 @@
 
 > [MySQL Connector/C++](https://dev.mysql.com/downloads/connector/cpp/)
 
+使い方は以下に書いてある。
+> [mysql.com](https://dev.mysql.com/doc/connector-cpp/8.0/en/preface.html)
 
 ## step2
 
