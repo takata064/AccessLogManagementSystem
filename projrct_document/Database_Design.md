@@ -8,7 +8,7 @@
 | name | varchar |
 | entrytime | timestamp |
 | exittime | timestamp |
-| room | char(3) |
+| room | varchar |
 
 
 ## テーブル一覧
