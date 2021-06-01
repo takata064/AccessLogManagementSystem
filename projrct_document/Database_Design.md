@@ -27,12 +27,12 @@
 ## データ型
 |  カラム名  |  データ型  |
 |----|----|
-|  amac  |  varchar  |
+|  amac  |  varchar(20)  |
 | id | char(6) |
-| name | varchar |
+| name | varchar(20) |
 | entrytime | timestamp |
 | exittime | timestamp |
-| room | varchar |
+| room | varchar(5) |
 
 
 ## テーブル一覧
