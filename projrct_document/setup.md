@@ -76,7 +76,17 @@ int main(){
  make test
  ```
 
-を実行してコンパイル。コンパイルするだけだよ。何事もなく終了したらOK。
+を実行してコンパイル。エラーが出なかったらOK。
+最後に
+```
+./test
+```
+を入力して、
+> libc++abi: terminating with uncaught exception of type sql::InvalidArgumentException: Unable to connect to localhost
+Abort trap: 6
+
+みたいなエラーが出たら、ちゃんと動作してくれていると思うのでOK。
+
 
 ## 上手くいかない時は..
 ### dyldのエラー
