@@ -1,4 +1,4 @@
-# MySQL Connector/C++ のインストール手順(MAC)
+# MySQL Connector/C++ のインストール手順と動作確認(MAC)
 
 ## 事前に必要なもの
 * boost(依存関係分かってないけど多分必要)
@@ -30,7 +30,7 @@ app : app.cpp
 
 ## step3
 
-同じディレクトリにtest.cppを作成。
+同じディレクトリに動作確認用のtest.cppを作成。
 
 ```
 // test.cpp
@@ -74,4 +74,4 @@ int main(){
  make test
  ```
 
-を実行。 何事もなく終了したら運がいいね。
+を実行してコンパイル。 何事もなく終了したらOK。
