@@ -1,0 +1,13 @@
+version: '3'
+services:
+  db:
+    image: mysql:5.7
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: playground
+      MYSQL_USER: b3
+      MYSQL_PASSWORD: b3
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    ports:
+    - 33306:3306
