@@ -12,13 +12,18 @@
 * name
 
 その人の名前。
+
 * entrytime
 
 入ってきた時間。
 
+* updatetime
+
+直近で在室が確認できた時間
+
 * exittime
 
-出て行った時間。
+最後に在室していた時間。
 
 * room
 
@@ -31,6 +36,7 @@
 | id | char(6) |
 | name | varchar(20) |
 | entrytime | timestamp |
+| updatetime | timestamp |
 | exittime | timestamp |
 | room | varchar(5) |
 
@@ -38,9 +44,9 @@
 ## テーブル一覧
 * 未処理のテーブル　
 
-|  amac |  id  |  name  |  entrytime  |  exittime  | room |
-| ---- | ---- |----|----|----|----|
-|  AJSHCHC#DAS  |  k19064  |  高田優一  |   2021-06-02 12:30:00 | 2021-06-02 16:50:00 |  111 |
+|  amac |  id  |  name  |  entrytime  | updatetime |  exittime  | room |
+| ---- | ---- |----|----|----|----|----|
+|  AJSHCHC#DAS  |  k19064  |  高田優一  |   2021-06-02 12:30:00 | 2021-06-02 16:50:00 | 2021-06-02 16:50:00 |  111 |
 
 * member
 
@@ -56,9 +62,9 @@
 
 * entrymember
 
-| id | entrytime | room |
-|----|----|----|
-| k19064 | 2021-06-02 12:30:00 | 111 |
+| id | entrytime | updatetime |room |
+|----|----|----|----|
+| k19064 | 2021-06-02 12:30:00 | 2021-06-02 16:50:00 | 111 |
 
 * log
 
