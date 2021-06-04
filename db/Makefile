@@ -1,4 +1,7 @@
 DBContainerName=mysql
+MYSQL_USER=root
+MYSQL_PASSWORD=root
+MYSQL_DATABASE=playground
 
 build:
 	docker-compose build
@@ -22,7 +25,7 @@ stop:
 	docker stop  $(DBContainerName)
 
 sql:
-	docker exec -it $(DBContainerName) sh -c 'mysql -u $$MYSQL_USER -p$$MYSQL_PASSWORD $$MYSQL_DATABASE'
+	docker exec -it $(DBContainerName) sh -c 'mysql -u $(MYSQL_USER) -p$(MYSQL_PASSWORD) $(MYSQL_DATABASE)'
 
 sql/bash:
 	docker exec -it $(DBContainerName) bin/bash
