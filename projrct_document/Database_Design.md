@@ -48,7 +48,7 @@
 | ---- | ---- |----|----|----|----|----|
 |  AJSHCHC#DAS  |  k19064  |  高田優一  |   2021-06-02 12:30:00 | 2021-06-02 16:50:00 | 2021-06-02 16:50:00 |  111 |
 
-* member
+* memberlist
 
 | id | name |
 |----|----|
@@ -60,13 +60,13 @@
 |----|----|
 | AJSHCHC#DAS | k19064 |        
 
-* entrymember
+* entrylist
 
 | id | entrytime | updatetime |room |
 |----|----|----|----|
 | k19064 | 2021-06-02 12:30:00 | 2021-06-02 16:50:00 | 111 |
 
-* log
+* accesslog
 
 | id | entrytime | exittime |room |
 |----|----|----|----|
