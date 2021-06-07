@@ -32,7 +32,7 @@
 ## データ型
 |  カラム名  |  データ型  |
 |----|----|
-|  amac  |  varchar()  |
+|  amac  |  varchar(100)  |
 | id | char(6) |
 | name | varchar(20) |
 | entrytime | timestamp |
