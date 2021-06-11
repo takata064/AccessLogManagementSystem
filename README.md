@@ -1,1 +1,1 @@
-# いろいろ
+# 進捗はproject_documentに
