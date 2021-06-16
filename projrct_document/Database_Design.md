@@ -4,6 +4,7 @@
 * amac(AnonymousMACAdress)
 
   ハッシュ化されたMACアドレス。一人が複数台の端末を持っていることを想定している。
+  ハッシュ化はSHA2-256->RIPEMD160の手順で行う。一方向ハッシュなので照合の際には注意すること。
 
 * id
 
@@ -34,7 +35,7 @@
 ## データ型
 |  カラム名  |  データ型  |
 |----|----|
-|  amac  |  varchar(256) くらい?  |
+|  amac  |  varchar(40) くらい?  |
 | id | char(6) |
 | name | varchar(20) |
 | entrytime | timestamp |
