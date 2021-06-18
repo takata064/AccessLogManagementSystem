@@ -12,7 +12,7 @@ using namespace std;
 sql::mysql::MySQL_Driver *driver;
 sql::Connection *con;
 sql::Statement *stmt;
-sql::ResultSet  *res;
+//sql::ResultSet  *res;
 sql::PreparedStatement *prep_stmt;
 
 string address="tcp://127.0.0.1:33306";
@@ -26,16 +26,17 @@ int main(){
 	stmt = con->createStatement();
 	stmt->execute("USE access_member");
 
-	prep_stmt = con->prepareStatement("INSERT INTO member(id, name) VALUES (?, ?)");
+	prep_stmt = con->prepareStatement("INSERT INTO entrylist(id, entrytime, room) VALUES (?, ?, ?)");
 
-	prep_stmt->setString(1, "k19456");
-	prep_stmt->setString(2, "わあため");
+	prep_stmt->setString(1, "k19555");
+	prep_stmt->setString(2, "2015-03-13 21:01:59");
+	prep_stmt->setString(3, "111");
 	prep_stmt->execute();
 
 	//stmt->execute("insert into member values('k19064','高田優一')");
 
 	delete prep_stmt;
-	delete res;
+	//delete res;
 	delete stmt;
 	delete con;
 }
