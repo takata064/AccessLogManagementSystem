@@ -40,7 +40,7 @@ string sha256(const string str)
 int main() {
     string data;
     data=sha256("パスワード");
-    cout << ripemd(data) << "," << ripemd(data).length() << endl;
-    cout << ripemd("パスワード") << endl;
+    //cout << ripemd(data) << "," << ripemd(data).length() << endl;
+    cout << ripemd(data) << endl;
     return 0;
 }
