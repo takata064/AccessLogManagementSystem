@@ -38,7 +38,9 @@ string sha256(const string str)
 }
 
 int main() {
-    cout << sha256("1234567890_1") << endl;
-    cout << ripemd("1234567890_1") << endl;
+    string data;
+    data=sha256("パスワード");
+    cout << ripemd(data) << "," << ripemd(data).length() << endl;
+    cout << ripemd("パスワード") << endl;
     return 0;
 }
