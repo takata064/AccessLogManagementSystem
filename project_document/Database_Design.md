@@ -6,10 +6,6 @@
   ハッシュ化されたMACアドレス。一人が複数台の端末を持っていることを想定している。
   ハッシュ化にはHMACのアルゴリズムを使う。
 
-* salt
-
-  ハッシュ化に使うランダムな文字列。
-
 * name
 
   その人の名前。本名でなくとも、識別できるものであればよい。
@@ -48,6 +44,7 @@
 ## HMACのアルゴリズムを使ったハッシュ化
 
 アルゴリズムは以下のようになる。
+ソルトは今回の場合実装が困難なので、擬似的なHMACを実装する。
 
 |名前|記号|
 |----|----|
@@ -60,7 +57,7 @@
 |SHA2_256()|H_1()|
 |RIPEMD160()|H_2()|
 
-* ソルトKと定数ipad,opadの排他的論理和をとり、カギを作成
+* 定数k,ipad,opadの排他的論理和をとり、カギを作成
 
   <img src="https://latex.codecogs.com/gif.latex?{\color{Cyan}&space;ikey&space;=&space;k&space;\oplus&space;ipad&space;}"> \\
   
@@ -75,7 +72,6 @@
 |  カラム名  |  データ型  |
 |----|----|
 |  amac  |  varchar(40) くらい?  |
-| salt | char(8) |
 | password | varchar(32) |
 | name | varchar(80) |
 | status | varchar(40) |
@@ -89,9 +85,9 @@
 ## 未処理のテーブル
 * 第一正規化後のテーブル　
 
-|  amac |  salt  |  name  | password |  status  |  comment  |  entrytime  | updatetime |  exittime  | room |
-| ---- | ---- |----|----|----|----|----|----|----|----|
-|  AJSHCHC#DAS  |  abcdefgh  |  たかたか  |  cisco1234  |  学部生  |  iPhone  |   2021-06-02 12:30:00 | 2021-06-02 16:50:00 | 2021-06-02 16:50:00 |  111 |
+|  amac |  name  | password |  status  |  comment  |  entrytime  | updatetime |  exittime  | room |
+| ---- | ---- |----|----|----|----|----|----|----|
+|  AJSHCHC#DAS  |  たかたか  |  cisco1234  |  学部生  |  iPhone  |   2021-06-02 12:30:00 | 2021-06-02 16:50:00 | 2021-06-02 16:50:00 |  111 |
 
 ## テーブル一覧
 
@@ -103,9 +99,9 @@
 
 * devicelist
 
-| amac | salt | comment | name |
-|----|----|----|----|
-| AJSHCHC#DAS | abcdefgh | iPhone | たかたか |        
+| amac | comment | name |
+|----|----|----|
+| AJSHCHC#DAS | iPhone | たかたか |        
 
 * entrylist
 

@@ -24,6 +24,8 @@ services:
     command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
     environment:
       MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: b3
+      MYSQL_PASSWORD: b3
  
   phpmyadmin:
     image: phpmyadmin/phpmyadmin:latest
