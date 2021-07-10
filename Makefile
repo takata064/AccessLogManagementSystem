@@ -1,7 +1,31 @@
-MYSQL_CONCPP_DIR = /usr/local/mysql-connector-c++-8.0.25
-CPPFLAGS = -I $(MYSQL_CONCPP_DIR)/include -L $(MYSQL_CONCPP_DIR)/lib64
-LDLIBS = -lmysqlcppconn
-CXX = clang++
-CXXFLAGS = -std=c++11
-app : app.cpp
+DBContainerName=web_db_1
+MYSQL_USER=root
+MYSQL_PASSWORD=root
+MYSQL_DATABASE=playground
 
+build:
+	docker-compose build
+
+up:
+	docker-compose up
+
+up/d:
+	docker-compose up -d
+
+up/b/d:
+	docker-compose up --build -d
+
+ps:
+	docker-compose ps
+
+down:
+	docker-compose down
+
+stop:
+	docker stop  $(DBContainerName)
+
+sql:
+	docker exec -it $(DBContainerName) sh -c 'mysql -u $(MYSQL_USER) -p$(MYSQL_PASSWORD)'
+
+sql/bash:
+	docker exec -it $(DBContainerName) bin/bash
