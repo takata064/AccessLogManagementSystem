@@ -4,7 +4,7 @@
 * amac(AnonymousMACAdress)
 
   ハッシュ化されたMACアドレス。一人が複数台の端末を持っていることを想定している。
-  ハッシュ化にはHMACのアルゴリズムを使う。
+  ハッシュ化にはRIPEMD160とSHA2_256を使う。
 
 * name
 
@@ -38,40 +38,10 @@
 
   部屋番号。
   
-## ユーザ権限
-  まだわかりません
-  
-## HMACのアルゴリズムを使ったハッシュ化
-
-アルゴリズムは以下のようになる。
-ソルトは今回の場合実装が困難なので、擬似的なHMACを実装する。
-
-|名前|記号|
-|----|----|
-|ソルト|k|
-|MACアドレス|m|
-|ipad|ipad|
-|opad|opad|
-|okey|okey|
-|ikey|ikey|
-|SHA2_256()|H_1()|
-|RIPEMD160()|H_2()|
-
-* 定数k,ipad,opadの排他的論理和をとり、カギを作成
-
-  <img src="https://latex.codecogs.com/gif.latex?{\color{Cyan}&space;ikey&space;=&space;k&space;\oplus&space;ipad&space;}"> \\
-  
-  <img src="https://latex.codecogs.com/gif.latex?{\color{Cyan}&space;okey&space;=&space;k&space;\oplus&space;opad&space;}">
-
-* 作成したカギとMACアドレスを組み合わせたものに対してハッシュ化を重ね合わせることで、解読しにくくする
-
-  <img src="https://latex.codecogs.com/gif.latex?{\color{Cyan}AMAC&space;=&space;H_2&space;\left&space;(&space;H_1\left&space;(okey&space;\left&space;\|&space;H_1\left&space;(&space;ikey&space;\right&space;\|m&space;\right&space;)&space;\right&space;)&space;\right&space;)&space;}">
-
-
 ## データ型
 |  カラム名  |  データ型  |
 |----|----|
-|  amac  |  varchar(40) くらい?  |
+|  amac  |  varchar(40) |
 | password | varchar(32) |
 | name | varchar(80) |
 | status | varchar(40) |
