@@ -1,6 +1,6 @@
 <?php
 
-$dsn      = 'mysql:host=localhost:33306;dbname=eagis;';
+$dsn      = 'mysql:host=192.168.3.3:33306;dbname=eagis;';
 $user     = 'root';
 $password = 'root';
 
@@ -11,14 +11,18 @@ try{
     $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $dbh->setATTRIBUTE(PDO::ATTR_EMULATE_PREPARES, false);
 
+
+    $sql = "INSERT INTO memberlist (name, status, password) VALUES (:name, :status, :password)";
+
     // クエリの実行
-    $query = "SELECT * FROM member_list";
-    $stmt = $dbh->query($query);
+    $stmt = $dbh->prepare($sql);
+    $params = array(':name' => '高田', ':status' => '学生', ':password' => 'aaaaa');
+    $stmt->execute($params);
 
     // 表示処理
-    while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-        echo $row["name"];
-    }
+    //while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+        //echo $row["name"];
+    //}
 
 }catch(PDOException $e){
     print("データベースの接続に失敗しました".$e->getMessage());

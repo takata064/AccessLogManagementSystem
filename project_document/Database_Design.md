@@ -18,7 +18,7 @@
   
   その人の情報、役割。学生、院生など。
   
-* comment
+* device
   
   デバイスの説明。ここの情報で何のデバイスかを識別。
 
@@ -45,7 +45,7 @@
 | password | varchar(32) |
 | name | varchar(80) |
 | status | varchar(40) |
-| comment | varchar(40) |
+| device | varchar(40) |
 | entrytime | timestamp |
 | updatetime | timestamp |
 | exittime | timestamp |
@@ -55,7 +55,7 @@
 ## 未処理のテーブル
 * 第一正規化後のテーブル　
 
-|  amac |  name  | password |  status  |  comment  |  entrytime  | updatetime |  exittime  | room |
+|  amac |  name  | password |  status  |  device  |  entrytime  | updatetime |  exittime  | room |
 | ---- | ---- |----|----|----|----|----|----|----|
 |  AJSHCHC#DAS  |  たかたか  |  cisco1234  |  学部生  |  iPhone  |   2021-06-02 12:30:00 | 2021-06-02 16:50:00 | 2021-06-02 16:50:00 |  111 |
 
@@ -69,7 +69,7 @@
 
 * devicelist
 
-| amac | comment | name |
+| amac | device | name |
 |----|----|----|
 | AJSHCHC#DAS | iPhone | たかたか |        
 
