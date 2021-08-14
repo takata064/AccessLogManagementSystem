@@ -1,4 +1,6 @@
 <?php
+    $question = $_GET['name'];
+
     $dsn      = 'mysql:host=192.168.3.3:33306;dbname=eagis;';
     $user     = 'root';
     $password = 'root';
@@ -11,14 +13,14 @@
         $dbh->setATTRIBUTE(PDO::ATTR_EMULATE_PREPARES, false);
 
         // クエリの実行
-        $query = "SELECT * FROM entrylist";
+        $query = "SELECT * FROM log WHERE name="."'".$question."'";
         $stmt = $dbh->query($query);
 
         // 表示処理
         while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
             echo $row["name"];
             echo $row["entrytime"];
-            echo $row["updatetime"];
+            echo $row["exittime"];
             echo $row["room"];
         }
 
@@ -39,6 +41,6 @@
     <title>Document</title>
 </head>
 <body>
-    entry
+    log
 </body>
 </html>

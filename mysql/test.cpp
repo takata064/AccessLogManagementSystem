@@ -24,7 +24,7 @@ int main(){
 	driver = sql::mysql::get_mysql_driver_instance();
 	con = driver->connect(address, user, password);
 	stmt = con->createStatement();
-	stmt->execute("USE access_member");
+	stmt->execute("USE eagis");
 
 	prep_stmt = con->prepareStatement("INSERT INTO entrylist(id, entrytime, room) VALUES (?, ?, ?)");
 
