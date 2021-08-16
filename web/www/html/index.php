@@ -1,34 +1,5 @@
 <?php
-    $dsn      = 'mysql:host=192.168.3.3:33306;dbname=eagis;';
-    $user     = 'root';
-    $password = 'root';
-
-    // DBへ接続
-    try{
-        $dbh = new PDO($dsn, $user, $password);
-
-        $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $dbh->setATTRIBUTE(PDO::ATTR_EMULATE_PREPARES, false);
-
-        // クエリの実行
-        $query = "SELECT * FROM entrylist";
-        $stmt = $dbh->query($query);
-
-        // 表示処理
-        while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-            echo $row["name"];
-            echo $row["entrytime"];
-            echo $row["updatetime"];
-            echo $row["room"];
-        }
-
-    }catch(PDOException $e){
-        print("データベースの接続に失敗しました".$e->getMessage());
-        die();
-    }
-
-    // 接続を閉じる
-    $dbh = null;
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -39,6 +10,7 @@
     <title>Document</title>
 </head>
 <body>
-    entry
+    <h1>oops!</h1>
+    <h2>URLまちがえた？再トライ！</h2>
 </body>
 </html>

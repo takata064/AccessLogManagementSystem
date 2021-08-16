@@ -1,7 +1,7 @@
 <?php
     $question = $_GET['name'];
 
-    $dsn      = 'mysql:host=192.168.3.3:33306;dbname=eagis;';
+    $dsn      = 'mysql:host=db;dbname=eagis;';
     $user     = 'root';
     $password = 'root';
 
