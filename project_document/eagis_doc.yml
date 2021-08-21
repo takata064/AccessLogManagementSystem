@@ -1,21 +1,20 @@
 swagger: "2.0"
 info:
-  description: "これはEAGIS_BACKENDに関するAPIです。"
+  description: "これはEAGIS_WebBackendに関するAPIです。"
   version: "1.0.0"
   title: "EAGIS_BACKEND API"
   
 paths:
-  /member/entry/{name}:
+  /serch/entry/member:
     get:
-      summary: "現在のメンバー情報API"
-      description: "指定された名前の情報を返します"
+      summary: "現在の入室状況情報API"
+      description: "パラメータで指定された名前がentrylistに登録されていれば、その情報を返します。存在しなければ空データが返されます。"
       parameters:
       - name: "name"
-        in: "path"
+        in: "query"
         description: "現在の情報を取得したい人の名前"
         required: true
         type: "string"
-        format: "example"
       responses:
         200:
           description: "成功時のレスポンス"
@@ -37,41 +36,132 @@ paths:
               devices:
                 type: "string"
                 example: "iPhone"
-  /member/log/{name}:
+  /serch/log/member:
     get:
-      summary: "過去のメンバー情報API"
-      description: "指定された名前の情報を返します"
+      summary: "過去の入室状況情報API"
+      description: "パラメータで指定された名前がlogに登録されていれば、その情報を返します。存在しなければ空データが返されます。"
       parameters:
       - name: "name"
-        in: "path"
-        description: "過去の情報を取得したい人の名前"
+        in: "query"
+        description: "現在の情報を取得したい人の名前"
         required: true
         type: "string"
-        format: "example"
       responses:
         200:
           description: "成功時のレスポンス"
           schema:
-            type: "array"
-            items:
-              type: "object"
-              properties:
-                name:
-                  type: "string"
-                  example: "nnnnn"
-                entry_time:
-                  type: "string"
-                  example: "yyyy-mm-dd hh:mm:ss"
-                exit_time:
-                  type: "string"
-                  example: "yyyy-mm-dd hh:mm:ss"
-                room:
-                  type: "string"
-                  example: "111"
-                devices:
-                  type: "string"
-                  example: "iPhone"
-      
-      
+            type: "object"
+            properties:
+              name:
+                type: "string"
+                example: "nnnnn"
+              entry_time:
+                type: "string"
+                example: "yyyy-mm-dd hh:mm:ss"
+              update_time:
+                type: "string"
+                example: "yyyy-mm-dd hh:mm:ss"
+              room:
+                type: "string"
+                example: "111"
+              devices:
+                type: "string"
+                example: "iPhone"
+  /serch/entry/time:
+    get:
+      summary: "現在の入室状況情報API"
+      description: "パラメータで指定された時間を元にentrylistに対して検索をかけます。一致するものがなければ空データが返されます。optionが指定されなければ、完全一致の検索になります。"
+      parameters:
+      - name: "yaer"
+        in: "query"
+        description: "検索をかけたい年"
+        type: "string"
+      - name: "month"
+        in: "query"
+        description: "検索をかけたい月"
+        type: "string"
+      - name: "day"
+        in: "query"
+        description: "検索をかけたい秒"
+        type: "string"
+      - name: "hour"
+        in: "query"
+        description: "検索をかけたい時間"
+        type: "string"
+      - name: "option"
+        in: "query"
+        description: "以上の時は2、以下の時は0、完全一致の時は0を選択"
+        type: "integer"
+      responses:
+        200:
+          description: "成功時のレスポンス"
+          schema:
+            type: "object"
+            properties:
+              name:
+                type: "string"
+                example: "nnnnn"
+              entry_time:
+                type: "string"
+                example: "yyyy-mm-dd hh:mm:ss"
+              update_time:
+                type: "string"
+                example: "yyyy-mm-dd hh:mm:ss"
+              room:
+                type: "string"
+                example: "111"
+              devices:
+                type: "string"
+                example: "iPhone"
+  /serch/log/time:
+    get:
+      summary: "過去の入室状況情報API"
+      description: "パラメータで指定された時間を元にlogに対して検索をかけます。一致するものがなければ空データが返されます。optionが指定されなければ、完全一致の検索になります。"
+      parameters:
+      - name: "yaer"
+        in: "query"
+        description: "検索をかけたい年"
+        type: "string"
+      - name: "month"
+        in: "query"
+        description: "検索をかけたい月"
+        type: "string"
+      - name: "day"
+        in: "query"
+        description: "検索をかけたい秒"
+        type: "string"
+      - name: "hour"
+        in: "query"
+        description: "検索をかけたい時間"
+        type: "string"
+      - name: "option"
+        in: "query"
+        description: "以上の時は2、以下の時は0、完全一致の時は0を選択"
+        type: "integer"
+      responses:
+        200:
+          description: "成功時のレスポンス"
+          schema:
+            type: "object"
+            properties:
+              name:
+                type: "string"
+                example: "nnnnn"
+              entry_time:
+                type: "string"
+                example: "yyyy-mm-dd hh:mm:ss"
+              update_time:
+                type: "string"
+                example: "yyyy-mm-dd hh:mm:ss"
+              room:
+                type: "string"
+                example: "111"
+              devices:
+                type: "string"
+                example: "iPhone"
+  #/regist/member:
+  #  post:
+  #  response:
+  
       
       
