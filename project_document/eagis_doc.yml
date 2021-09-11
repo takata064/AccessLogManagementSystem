@@ -2,15 +2,232 @@ swagger: "2.0"
 info:
   description: "これはEAGIS_WebBackendに関するAPIです。"
   version: "1.0.0"
-  title: "EAGIS_BACKEND API"
-  
+  title: "EAGIS_WebBackend API"
+
+tags:
+  - name: "login"
 paths:
-  /serch/entry/member:
-    get:
-      summary: "現在の入室状況情報API"
-      description: "パラメータで指定された名前がentrylistに登録されていれば、その情報を返します。存在しなければ空データが返されます。"
+  /login:
+    post:
+      summary: "ログイン用のAPI"
+      description: "ログインするためのAPI"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
       parameters:
+      # パラメータの名前
+      - name: "body"
+        # パラメータの場所
+        in: "body"
+        required: true
+        schema:
+          type: "object"
+          properties:
+            name:
+              type: "string"
+              example: "piyopiyo"
+            password:
+              type: "string"
+              example: "piyopiyo!@12"
+      responses:
+        200:
+          description: "成功"
+          schema:
+            type: "object"
+            properties:
+              name:
+                type: "string"
+                example: "piyopiyo"
+              token:
+                type: "string"
+                example: "abcde"
+        400:
+          description: "失敗"
+          schema:
+            type: "object"
+            properties:
+              message:
+                type: "string"
+                example: "Bad Request"
+  /register:
+    post:
+      tags: 
+        - "register"
+      summary: "新規登録用のAPI"
+      description: "新規登録するためのAPI"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+      # パラメータの名前
+      - name: "body"
+        # パラメータの場所
+        in: "body"
+        required: true
+        schema:
+          type: "object"
+          properties:
+            name:
+              type: "string"
+              example: "piyopiyo"
+            status:
+              type: "string"
+              example: "b3"
+            password:
+              type: "string"
+              example: "piyopiyo!@12"
+      responses:
+        200:
+          description: "成功"
+          schema:
+            type: "object"
+            properties:
+              name:
+                type: "string"
+                example: "piyopiyo"
+              token:
+                type: "string"
+                example: "abcde"
+        400:
+          description: "失敗"
+          schema:
+            type: "object"
+            properties:
+              message:
+                type: "string"
+                example: "Bad Request"
+  /device_register:
+    post:
+      tags: 
+        - "device_register"
+      summary: "デバイス登録用のAPI"
+      description: "デバイスを登録するためのAPI"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+      # パラメータの名前
+      - name: "body"
+        # パラメータの場所
+        in: "body"
+        required: true
+        schema:
+          type: "object"
+          properties:
+            macaddress:
+              type: "string"
+              example: "piyopiyo"
+            status:
+              type: "string"
+              example: "b3"
+            owner:
+              type: "string"
+              example: "takata"
+      responses:
+        200:
+          description: "成功"
+        400:
+          description: "失敗"
+          schema:
+            type: "object"
+            properties:
+              message:
+                type: "string"
+                example: "Bad Request"
+
+  /log:
+    get:
+      tags:
+        - "log"
+      summary: "ログの取得用API"
+      description: "ログの取得"
+      parameters:
+      - name: "token"
+        in: "query"
+        description: "現在の情報を取得したい人の名前"
+        required: true
+        type: "string"
+      - name: "time"
+        in: "query"
+        description: "1,3,6,12のどれかの値"
+        required: true
+        type: "integer"
+      responses:
+        200:
+          description: "成功時のレスポンス"
+          schema:
+            type: "object"
+            properties:
+              name:
+                type: "string"
+                example: "nnnnn"
+              entry_time:
+                type: "string"
+                example: "yyyy-mm-dd hh:mm:ss"
+              update_time:
+                type: "string"
+                example: "yyyy-mm-dd hh:mm:ss"
+              room:
+                type: "string"
+                example: "111"
+              devices:
+                type: "string"
+                example: "iPhone"
+  /log/person:
+    get:
+      tags:
+        - "log"
+      summary: "ログの取得用API"
+      description: "ログの取得"
+      parameters:
+      - name: "token"
+        in: "query"
+        description: "現在の情報を取得したい人の名前"
+        required: true
+        type: "string"
       - name: "name"
+        in: "query"
+        description: "現在の情報を取得したい人の名前"
+        required: true
+        type: "string"
+      #3ヶ月分のデータの表示
+      responses:
+        200:
+          description: "成功時のレスポンス"
+          schema:
+            type: "object"
+            properties:
+              name:
+                type: "string"
+                example: "nnnnn"
+              entry_time:
+                type: "string"
+                example: "yyyy-mm-dd hh:mm:ss"
+              update_time:
+                type: "string"
+                example: "yyyy-mm-dd hh:mm:ss"
+              room:
+                type: "string"
+                example: "111"
+              devices:
+                type: "string"
+                example: "iPhone"
+  /log/time:
+    get:
+      tags:
+        - "log"
+      summary: "ログの取得用API"
+      description: "ログの取得"
+      parameters:
+      - name: "token"
+        in: "query"
+        description: "年月日で検索"
+        required: true
+        type: "string"
+      - name: "date"
         in: "query"
         description: "現在の情報を取得したい人の名前"
         required: true
@@ -36,132 +253,3 @@ paths:
               devices:
                 type: "string"
                 example: "iPhone"
-  /serch/log/member:
-    get:
-      summary: "過去の入室状況情報API"
-      description: "パラメータで指定された名前がlogに登録されていれば、その情報を返します。存在しなければ空データが返されます。"
-      parameters:
-      - name: "name"
-        in: "query"
-        description: "現在の情報を取得したい人の名前"
-        required: true
-        type: "string"
-      responses:
-        200:
-          description: "成功時のレスポンス"
-          schema:
-            type: "object"
-            properties:
-              name:
-                type: "string"
-                example: "nnnnn"
-              entry_time:
-                type: "string"
-                example: "yyyy-mm-dd hh:mm:ss"
-              update_time:
-                type: "string"
-                example: "yyyy-mm-dd hh:mm:ss"
-              room:
-                type: "string"
-                example: "111"
-              devices:
-                type: "string"
-                example: "iPhone"
-  /serch/entry/time:
-    get:
-      summary: "現在の入室状況情報API"
-      description: "パラメータで指定された時間を元にentrylistに対して検索をかけます。一致するものがなければ空データが返されます。optionが指定されなければ、完全一致の検索になります。"
-      parameters:
-      - name: "yaer"
-        in: "query"
-        description: "検索をかけたい年"
-        type: "string"
-      - name: "month"
-        in: "query"
-        description: "検索をかけたい月"
-        type: "string"
-      - name: "day"
-        in: "query"
-        description: "検索をかけたい秒"
-        type: "string"
-      - name: "hour"
-        in: "query"
-        description: "検索をかけたい時間"
-        type: "string"
-      - name: "option"
-        in: "query"
-        description: "以上の時は2、以下の時は0、完全一致の時は0を選択"
-        type: "integer"
-      responses:
-        200:
-          description: "成功時のレスポンス"
-          schema:
-            type: "object"
-            properties:
-              name:
-                type: "string"
-                example: "nnnnn"
-              entry_time:
-                type: "string"
-                example: "yyyy-mm-dd hh:mm:ss"
-              update_time:
-                type: "string"
-                example: "yyyy-mm-dd hh:mm:ss"
-              room:
-                type: "string"
-                example: "111"
-              devices:
-                type: "string"
-                example: "iPhone"
-  /serch/log/time:
-    get:
-      summary: "過去の入室状況情報API"
-      description: "パラメータで指定された時間を元にlogに対して検索をかけます。一致するものがなければ空データが返されます。optionが指定されなければ、完全一致の検索になります。"
-      parameters:
-      - name: "yaer"
-        in: "query"
-        description: "検索をかけたい年"
-        type: "string"
-      - name: "month"
-        in: "query"
-        description: "検索をかけたい月"
-        type: "string"
-      - name: "day"
-        in: "query"
-        description: "検索をかけたい秒"
-        type: "string"
-      - name: "hour"
-        in: "query"
-        description: "検索をかけたい時間"
-        type: "string"
-      - name: "option"
-        in: "query"
-        description: "以上の時は2、以下の時は0、完全一致の時は0を選択"
-        type: "integer"
-      responses:
-        200:
-          description: "成功時のレスポンス"
-          schema:
-            type: "object"
-            properties:
-              name:
-                type: "string"
-                example: "nnnnn"
-              entry_time:
-                type: "string"
-                example: "yyyy-mm-dd hh:mm:ss"
-              update_time:
-                type: "string"
-                example: "yyyy-mm-dd hh:mm:ss"
-              room:
-                type: "string"
-                example: "111"
-              devices:
-                type: "string"
-                example: "iPhone"
-  #/regist/member:
-  #  post:
-  #  response:
-  
-      
-      
